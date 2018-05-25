@@ -1,0 +1,444 @@
+@font-face {
+  font-family: 'Museo Slab 500';
+  src: url("moz-extension://ed579806-d5e2-43a0-bae4-84f6e5b72521/fonts/museo-slab-500.woff");
+}
+
+@font-face {
+  font-family: 'Font Awesome';
+  src: url("moz-extension://ed579806-d5e2-43a0-bae4-84f6e5b72521/fonts/fontawesome-webfont.woff");
+}
+
+/*
+App reset by Ben Frain @benfrain / benfrain.com
+Slightly modified by Bharani @bharani91 / github.com/bharani91
+*/
+/*Hat tip to @thierrykoblentz for this approach: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+.toolbar-inner-wrapper {
+  /*IMPORTANT: This removes the focus outline for most browsers. Be aware this is a backwards accessibilty step! Mozilla (i.e. Firefox) also adds a dotted outline around a tags and buttons when they receive tab focus which I haven't found an unhacky way of removing.*/
+  /*This switches the default outline off when an input receives focus (really important for users tabbing through with a keyboard) so ensure you put something decent in for your input focus instead!!*/
+  /*Removes the default focusring that Mozilla places on select items. From: http://stackoverflow.com/a/18853002/1147859 
+Ensure you set `#000` to the colour you want your text to appear */
+}
+
+.toolbar-inner-wrapper html {
+  box-sizing: border-box;
+}
+
+.toolbar-inner-wrapper * {
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: inherit;
+}
+
+.toolbar-inner-wrapper *:before,
+.toolbar-inner-wrapper *:after {
+  box-sizing: inherit;
+}
+
+.toolbar-inner-wrapper input[type],
+.toolbar-inner-wrapper [contenteditable] {
+  user-select: text;
+}
+
+.toolbar-inner-wrapper body,
+.toolbar-inner-wrapper h1,
+.toolbar-inner-wrapper h2,
+.toolbar-inner-wrapper h3,
+.toolbar-inner-wrapper h4,
+.toolbar-inner-wrapper h5,
+.toolbar-inner-wrapper h6,
+.toolbar-inner-wrapper p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.toolbar-inner-wrapper a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.toolbar-inner-wrapper a:focus,
+.toolbar-inner-wrapper button:focus {
+  outline: 0;
+}
+
+.toolbar-inner-wrapper button {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.toolbar-inner-wrapper input,
+.toolbar-inner-wrapper fieldset {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.toolbar-inner-wrapper input:focus {
+  outline: 0;
+}
+
+.toolbar-inner-wrapper img {
+  display: block;
+}
+
+.toolbar-inner-wrapper select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+#gooding-toolbar-iframe {
+  height: 67px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: transparent;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+#gooding-toolbar-iframe.show-settings {
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100% !important;
+}
+
+#gooding-iframe-body {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.toolbar-inner-wrapper {
+  background-color: #fff;
+}
+
+.toolbar-wrapper {
+  height: 67px;
+  margin: 0 auto;
+  width: 100% !important;
+  z-index: 2147483647 !important;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.toolbar-wrapper.hidden {
+  display: none !important;
+}
+
+.toolbar-container {
+  max-width: 1170px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 850px) {
+  .toolbar-container {
+    flex-wrap: wrap;
+  }
+}
+
+.toolbar-container > div {
+  display: flex;
+  padding: 10px 2%;
+  flex-grow: 1;
+}
+
+@media (max-width: 850px) {
+  .toolbar-container > div {
+    flex: 1 46% !important;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.toolbar-container a,
+.toolbar-container a:hover {
+  text-decoration: none;
+}
+
+.toolbar-container p {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.toolbar-container .hidden {
+  display: none !important;
+}
+
+.toolbar-container .gooding-logo {
+  flex-basis: 14%;
+  flex-shrink: 2;
+  height: 40px;
+}
+
+.toolbar-container .gooding-logo img {
+  height: 100%;
+}
+
+@media (max-width: 850px) {
+  .toolbar-container .gooding-logo {
+    flex: 1 100% !important;
+  }
+}
+
+.toolbar-container .gooding-product-search {
+  display: flex;
+  align-items: center;
+  flex-basis: 32%;
+}
+
+.toolbar-container .gooding-product-search p {
+  font-size: 13px;
+  color: #08088A;
+}
+
+.toolbar-container .gooding-project, .toolbar-container .gooding-product-search {
+  display: flex;
+  align-items: center;
+  flex-basis: 32%;
+}
+
+.toolbar-container .gooding-project .gooding-project-thumb, .toolbar-container .gooding-product-search .gooding-project-thumb {
+  background-color: #f1f1f1;
+  border: none;
+  margin-right: 15px;
+}
+
+.toolbar-container .gooding-project .gooding-project-thumb img, .toolbar-container .gooding-product-search .gooding-project-thumb img {
+  width: 45px;
+  height: 45px;
+}
+
+.toolbar-container .gooding-project .gooding-project-desc p, .toolbar-container .gooding-product-search .gooding-project-desc p {
+  font-size: 13px;
+  color: #08088A;
+}
+
+.toolbar-container .gooding-project .gooding-project-desc #gooding-project-edit, .toolbar-container .gooding-product-search .gooding-project-desc #gooding-project-edit {
+  color: #1F99D6;
+  white-space: nowrap;
+}
+
+.toolbar-container .gooding-project .gooding-project-desc #gooding-project-name, .toolbar-container .gooding-product-search .gooding-project-desc #gooding-project-name {
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  max-width: 300px;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+@media (max-width: 850px) {
+  .toolbar-container .gooding-project, .toolbar-container .gooding-product-search {
+    flex: 1 100% !important;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.toolbar-container .gooding-activation-panel {
+  flex-basis: 28%;
+  align-items: center;
+  flex-wrap: no-wrap;
+}
+
+.toolbar-container .gooding-activation-panel .gooding-activated-message {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  font-family: 'Museo Slab 500';
+  color: #59AD32;
+  font-size: 16px;
+}
+
+.toolbar-container .gooding-activation-panel .gooding-activated-message:before {
+  font-family: 'Font Awesome';
+  content: "\f00c";
+  padding-right: 10px;
+  font-size: 36px;
+}
+
+.toolbar-container .gooding-button {
+  background-color: #1F99D6;
+  height: 40px;
+  font-family: 'Museo Slab 500';
+  font-size: 12px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 25px;
+  cursor: pointer;
+}
+
+.toolbar-container .gooding-button:after {
+  font-family: 'Font Awesome';
+  content: "\f054";
+  padding-left: 10px;
+}
+
+.toolbar-container .gooding-button-light {
+  height: 40px;
+  border: 1px solid #BDBDBD;
+  color: #BDBDBD;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-family: 'Font Awesome';
+  cursor: pointer;
+}
+
+.toolbar-container .toolbar-controls {
+  flex-basis: 10%;
+}
+
+.toolbar-container .toolbar-controls .gooding-close-toolbar {
+  margin-left: 10px;
+}
+
+.toolbar-container .toolbar-controls #gooding-settings-box {
+  pointer: initial;
+  position: absolute;
+  overflow: visible;
+  top: 50px;
+  margin-left: -280px;
+  background-color: #fff;
+  width: 300px;
+  padding: 15px 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+.toolbar-container .toolbar-controls #gooding-settings-box label {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: flex-start;
+}
+
+.toolbar-container .toolbar-controls #gooding-settings-box label input {
+  margin-right: 5px;
+  margin-top: 2px;
+}
+
+.toolbar-container .toolbar-controls #gooding-settings-box label p {
+  width: 90%;
+  color: #08088A;
+}
+
+.toolbar-container .toolbar-controls #gooding-settings-box label p span.subtitle {
+  color: #BDBDBD;
+  font-size: 12px;
+}
+
+.toolbar-container .toolbar-controls #gooding-settings-box p.disabled {
+  color: #BDBDBD;
+}
+
+.toolbar-container .toolbar-controls #gooding-settings-box .gooding-settings-option a {
+  color: #08088A;
+}
+
+.toolbar-container .toolbar-controls #gooding-settings-box .arrow {
+  background-color: #fff;
+  position: absolute;
+  transform: rotate(45deg);
+  right: 25px;
+  top: -7px;
+  height: 15px;
+  width: 15px;
+}
+
+#gooding-toolbar-remember-box {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  width: 400px !important;
+  height: auto;
+  border: 1px solid #d5d3cd !important;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3) !important;
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3) !important;
+  position: fixed !important;
+  top: 80px !important;
+  right: 25px !important;
+  z-index: 2147483647 !important;
+  padding: 10px 15px !important;
+  display: flex;
+  flex-direction: column;
+}
+
+#gooding-toolbar-remember-box #gooding-toolbar-remember-title {
+  width: 90% !important;
+  color: #08088A !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+  margin-top: -17px;
+}
+
+#gooding-toolbar-remember-box #gooding-toolbar-remember-close {
+  color: #666 !important;
+  text-align: right !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  line-height: 14px !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+#gooding-toolbar-remember-box #gooding-toolbar-remember-link {
+  color: #3191DD !important;
+  text-decoration: none !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+#gooding-toolbar-remember-box #gooding-toolbar-remember-details {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+#gooding-toolbar-remember-box #gooding-toolbar-remember-details #gooding-toolbar-remember-image img {
+  margin-right: 10px;
+}
+
+#gooding-toolbar-remember-box #gooding-toolbar-remember-details #gooding-toolbar-remember-image img[src=""],
+#gooding-toolbar-remember-box #gooding-toolbar-remember-details #gooding-toolbar-remember-image img[src="null"],
+#gooding-toolbar-remember-box #gooding-toolbar-remember-details #gooding-toolbar-remember-image img[src="undefined"] {
+  display: none;
+}
+
+#gooding-toolbar-remember-box #gooding-toolbar-remember-go {
+  background-color: #1F99D6;
+  height: 30px;
+  font-size: 12px;
+  color: #fff;
+  width: 120px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#gooding-toolbar-remember-box #gooding-toolbar-remember-go:hover {
+  color: #fff;
+  text-decoration: none;
+}
